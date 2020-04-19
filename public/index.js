@@ -2,7 +2,7 @@ let transactions = [];
 let myChart;
 
 fetch("/api/transaction")
-  .then(response => response.json())
+  .then(resp => resp.json())
   .then(data => {
     // save db data on global variable
     transactions = data;
@@ -12,6 +12,7 @@ fetch("/api/transaction")
   });
 
 function populateTotal() {
+  console.log("transactions", transactions, typeof(transactions))
   // reduce transaction amounts to a single total value
   const total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
